@@ -16,8 +16,8 @@ FROM alpine:3.17
 
 RUN apk update --no-cache && \
   apk add --no-cache \
-    tzdata==2023b-r1 \
-    ca-certificates==20220614-r4
+    tzdata==2023c-r0 \
+    ca-certificates==20230506-r0
 
 WORKDIR /app
 
