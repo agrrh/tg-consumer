@@ -42,7 +42,7 @@ func main() {
 
 	nc, err := nats.Connect(natsAddr)
 	if err != nil {
-		log.Panic(err)
+		log.Panic("could not connect: ", err)
 	}
 
 	defer nc.Close()
@@ -50,7 +50,7 @@ func main() {
 
 	js, err := nc.JetStream()
 	if err != nil {
-		log.Panic(err)
+		log.Panic("could not get jetstream: ", err)
 	}
 
 	js.AddStream(&nats.StreamConfig{
@@ -66,7 +66,7 @@ func main() {
 
 	bot, err := tgbotapi.NewBotAPI(tgToken)
 	if err != nil {
-		log.Panic(err)
+		log.Panic("could not get telegram: ", err)
 	}
 
 	// Run logic
