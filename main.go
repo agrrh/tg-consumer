@@ -14,7 +14,7 @@ import (
 func main() {
 	// Init
 
-	var appName, tgToken, natsAddr, natsPubPrefix string
+	var appName, tgToken, natsAddr, natsPrefix string
 	var err error
 	var ok bool
 
