@@ -1,4 +1,4 @@
-module github.com/agrrh/lassie/tg-consumer
+module github.com/agrrh/tg-consumer
 
 go 1.20
 
