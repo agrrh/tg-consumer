@@ -10,6 +10,18 @@ Universal Telegram consumer daemon.
 ```yaml
 ---
 
+apiVersion: v1
+kind: Secret
+metadata:
+  name: tg-token
+  namespace: tg-my-consumer
+type: Opaque
+data:
+  token: base64-encoded-tg-token
+
+
+---
+
 kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata:
