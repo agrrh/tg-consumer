@@ -19,7 +19,6 @@ type: Opaque
 data:
   token: base64-encoded-tg-token
 
-
 ---
 
 kind: Application
