@@ -28,7 +28,7 @@ spec:
         - name: app.nats.addr
           value: nats.namespace:4222  # TODO: Change
         - name: app.nats.prefix
-          value: my-bot.tg.inbox      # TODO: Change
+          value: my-bot               # TODO: Change
   destination:
     namespace: tg-my-consumer
     server: https://kubernetes.default.svc

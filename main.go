@@ -33,9 +33,9 @@ func main() {
 		natsAddr = nats.DefaultURL
 	}
 
-	natsPubPrefix, ok = os.LookupEnv("APP_NATS_PREFIX")
+	natsPrefix, ok = os.LookupEnv("APP_NATS_PREFIX")
 	if !ok {
-		natsPubPrefix = "dummy.tg"
+		natsPrefix = "dummy"
 	}
 
 	// NATS
@@ -53,9 +53,14 @@ func main() {
 		log.Panic("could not get jetstream: ", err)
 	}
 
+	natsStreamChannel := fmt.Sprintf("%s.tg.in", natsPrefix)
+
 	js.AddStream(&nats.StreamConfig{
 		Name:     appName,
-		Subjects: []string{natsPubPrefix, fmt.Sprintf("%s.*", natsPubPrefix)},
+		Subjects: []string{
+			natsStreamChannel,
+			fmt.Sprintf("%s.*", natsStreamChannel),
+		},
 		Discard:  nats.DiscardOld,
 		MaxMsgs:  1000,
 	})
@@ -93,7 +98,7 @@ func main() {
 				continue
 			}
 
-			natsPubChannel := fmt.Sprintf("%s.%d", natsPubPrefix, chatID)
+			natsPubChannel := fmt.Sprintf("%s.%d", natsStreamChannel, chatID)
 
 			log.Println("publish to", natsPubChannel)
 

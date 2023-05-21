@@ -6,7 +6,7 @@ app:
   name: "tg-consumer-dummy"
   nats:
     addr: "bus.nats:4222"
-    prefix: "dummy.tg"
+    prefix: "dummy"
   tg:
     secretName: tg-token
     secretKey: token
