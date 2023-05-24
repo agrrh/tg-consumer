@@ -19,6 +19,9 @@ name: release
 steps:
   - name: generate-changelog
     image: naorlivne/drone-github-changelog-generator
+    environment:
+      CHANGELOG_GITHUB_TOKEN:
+        from_secret: github_token
     settings:
       github_user: agrrh
       github_project: tg-consumer
